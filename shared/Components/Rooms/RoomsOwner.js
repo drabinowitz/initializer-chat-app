@@ -2,7 +2,7 @@ var React = require('react');
 var RouteHandler = require('react-router').RouteHandler;
 
 var requestRoom = function () {
-  roomActions.get();
+  roomActions.read();
 };
 
 var InitializerMixin = require('react-router-initializer').generateMixin(requestRoom);
