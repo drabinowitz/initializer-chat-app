@@ -15,7 +15,7 @@ likeStore.getAllForMessage = function (messageId) {
   }.bind(this), 0);
 };
 
-LikeStore.deleteForMessageId = function (like) {
+likeStore.deleteForMessageId = function (like) {
   for (var id in this._data) {
     if (like.messageId === this._data[id].messageId.toString()) {
       delete likes[id];
@@ -43,4 +43,4 @@ appDispatcher.register(function (payload) {
   }
 });
 
-module.exports = roomStore;
+module.exports = likeStore;

@@ -9,7 +9,7 @@ var express = require('express');
 var app = express();
 
 var bodyParser = require('body-parser');
-var Fetcher = require('fetchr/lib/fetcher');
+var Fetcher = require('fetchr/libs/fetcher');
 
 Fetcher.registerFetcher(require('./services/likes'));
 Fetcher.registerFetcher(require('./services/messages'));
@@ -21,7 +21,8 @@ var Html = React.createFactory(require('../shared/Components/Html'));
 
 app.use(bodyParser.json());
 app.use('/public', express.static(__dirname + '/../client'));
-app.use(App.xhrPath, Fetcher.getMiddleware());
+
+app.use(App.xhrPath, Fetcher.middleware());
 
 app.use(function (req, res) {
   var fetcher = new Fetcher({

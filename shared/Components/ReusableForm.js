@@ -2,7 +2,7 @@ var React = require('react');
 
 var ReusableForm = React.createClass({
   propTypes: {
-    showForm: React.PropTypes.boolean,
+    showForm: React.PropTypes.bool,
     handleSubmit: React.PropTypes.func.isRequired,
     defaultValue: React.PropTypes.string,
     placeholder: React.PropTypes.string
