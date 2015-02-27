@@ -15,6 +15,16 @@ likeStore.getAllForMessage = function (messageId) {
   }.bind(this), 0);
 };
 
+LikeStore.deleteForMessageId = function (like) {
+  for (var id in this._data) {
+    if (like.messageId === this._data[id].messageId.toString()) {
+      delete likes[id];
+      break;
+    }
+  }
+  this.emitChange();
+};
+
 appDispatcher.register(function (payload) {
   var type = payload.action.type;
   var body = payload.action.body;
@@ -28,7 +38,7 @@ appDispatcher.register(function (payload) {
       break;
 
     case likeConstants.DELETE_LIKE:
-      likeStore.delete(body.like);
+      likeStore.deleteForMessageId(body.like);
       break;
   }
 });

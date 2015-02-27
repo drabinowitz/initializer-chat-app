@@ -56,7 +56,12 @@ LikeFetcher = {
   delete: function(req, resource, params, config, callback) {
     setTimeout(function () {
       var like = params.like;
-      delete likes[like.id];
+      for (var id in likes) {
+        if (like.messageId === likes[id].messageId.toString()) {
+          delete likes[id];
+          break;
+        }
+      }
       callback(null, like);
     }, 100);
   }
