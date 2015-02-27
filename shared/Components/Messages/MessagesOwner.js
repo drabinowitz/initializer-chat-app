@@ -9,7 +9,6 @@ var initializerMixin = require('react-router-initializer').generateMixin(request
 
 var messageActions = require('../Actions/messageActions');
 var messageStore = require('../Store/messageStore');
-
 var Message = require('./Message');
 
 var MessagesOwner = React.createClass({
