@@ -11,6 +11,7 @@ var InitializerMixin = require('react-router-initializer').generateMixin(request
 
 var roomActions = require('../../Actions/roomActions');
 var roomStore = require('../../Stores/roomStore');
+var ReusableForm = require('../ReusableForm');
 var Room = require('./Room');
 
 var RoomsOwner = React.createClass({
@@ -39,13 +40,26 @@ var RoomsOwner = React.createClass({
     roomStore.removeChangeListener(this.listenerCallback);
   },
 
+  createRoom: function (room) {
+    roomActions.create(room);
+  },
+
+  updateRoom: function (room, newRoom) {
+    roomActions.update(room, newRoom);
+  },
+
+  deleteRoom: function (room) {
+    roomActions.delete(room);
+  },
+
   render: function () {
     var roomList = Object.keys(this.state.rooms).sort(function (a,b) {return a-b;}).map(function (roomId) {
       var room = this.state.rooms[roomId];
-      return <Room key={room.id} room={room} />
+      return <Room key={room.id} room={room} handleUpdate={this.updateRoom} handleDelete={this.deleteRoom} />
     }.bind(this));
     return (
       <div>
+        <ReusableForm handleSubmit={this.createRoom}>Add New Room</ReusableForm>
         {roomList}
         <RouteHandler />
       </div>
