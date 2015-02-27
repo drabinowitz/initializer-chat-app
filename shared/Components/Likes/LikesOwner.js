@@ -19,6 +19,7 @@ var LikesOwner = React.createClass({
 
   getInitialState: function () {
     return {
+      hasLiked: false,
       likes: likesStore.getAllForMessage(this.props.messageId)
     };
   },
@@ -36,10 +37,29 @@ var LikesOwner = React.createClass({
     likeStore.removeChangeListener(this.listenerCallback);
   },
 
+  handleLike: function () {
+    if (!this.state.hasLiked) {
+      this.setState({
+        hasLiked: true
+      });
+      likeActions.create({
+        messageId: this.props.messageId
+      });
+    } else {
+      this.setState({
+        hasLiked: false
+      });
+      likeActions.delete({
+        messageId: this.props.messageId
+      });
+    }
+  },
+
   render: function () {
     return (
       <div>
         <p>Likes: {this.state.likes}</p>
+        <button onClick={this.handleLike}>{this.state.hasLiked ? 'Like': 'Unlike'}</button>
       </div>
     );
   }
