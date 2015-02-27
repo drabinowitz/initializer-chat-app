@@ -40,9 +40,10 @@ var RoomsOwner = React.createClass({
   },
 
   render: function () {
-    var roomList = this.state.rooms.map(function (room) {
+    var roomList = Object.keys(this.state.rooms).sort(function (a,b) {return a-b;}).map(function (roomId) {
+      var room = this.state.rooms[roomId];
       return <Room key={room.id} room={room} />
-    });
+    }.bind(this));
     return (
       <div>
         {roomList}

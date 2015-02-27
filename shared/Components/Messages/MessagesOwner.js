@@ -45,7 +45,8 @@ var MessagesOwner = React.createClass({
   },
 
   render: function () {
-    var messages = this.state.messages.map(function (message) {
+    var messages = Object.keys(this.state.messages).sort(function (a,b) {return a-b;}).map(function (messageId) {
+      var message = this.state.messages[messageId];
       return <Message key={message.id} message={message} />
     });
 
