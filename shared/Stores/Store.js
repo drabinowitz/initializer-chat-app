@@ -11,7 +11,7 @@ Store.prototype = Object.create(EventEmitter.prototype);
 Store.prototype.constructor = Store;
 
 Store.prototype.dehydrate = function () {
-  return [this.name. this._data];
+  return [this.name, this._data];
 };
 
 Store.prototype.rehydrate = function (state) {
