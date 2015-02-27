@@ -18,7 +18,7 @@ appDispatcher.register(function (payload) {
       break;
 
     case roomConstants.UPDATE_ROOM:
-      roomStore.update(body.room);
+      roomStore.update(body.room, body.newRoom);
       break;
 
     case roomConstants.DELETE_ROOM:

@@ -28,7 +28,7 @@ appDispatcher.register(function (payload) {
       break;
 
     case messageConstants.UPDATE_MESSAGE:
-      messageStore.update(body.message);
+      messageStore.update(body.message, body.newMessage);
       break;
 
     case messageConstants.DELETE_MESSAGE:
