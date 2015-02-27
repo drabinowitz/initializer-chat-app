@@ -3,13 +3,16 @@ var StateMixin = require('react-router').State;
 
 var requestMessage = function (params) {
   messageActions.read(params.roomId);
+  initializer.handle([LikesOwner]);
 };
 
-var initializerMixin = require('react-router-initializer').generateMixin(requestMessage);
+var initializer = require('react-router-initializer');
+var initializerMixin = initializer.generateMixin(requestMessage);
 
 var messageActions = require('../Actions/messageActions');
 var messageStore = require('../Store/messageStore');
 var Message = require('./Message');
+var LikesOwner = require('../Likes/LikesOwner');
 
 var MessagesOwner = React.createClass({
   mixins:[StateMixin, initializerMixin],
