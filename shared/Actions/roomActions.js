@@ -29,7 +29,7 @@ module.exports = {
     initializer.register(fetchRoom);
   },
   update: function (room) {
-    fetcher.updateAsync('room').then(function (newRoom) {
+    fetcher.updateAsync('room', {room: room}).then(function (newRoom) {
       appDispatcher.dispatchViewAction({
         type: roomConstants.UPDATE_ROOM,
         body: {
@@ -40,7 +40,7 @@ module.exports = {
     });
   },
   delete: function (room) {
-    fetcher.deleteAsync('room').then(function (room) {
+    fetcher.deleteAsync('room', {room: room}).then(function (room) {
       appDispatcher.dispatchViewAction({
         type: roomConstants.DELETE_ROOM,
         body: {

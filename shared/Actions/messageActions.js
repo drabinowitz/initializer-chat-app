@@ -14,8 +14,8 @@ module.exports = {
       });
     });
   },
-  read: function () {
-    var fetchMessage = fetcher.readAsync('message').then(function (messages) {
+  read: function (roomId) {
+    var fetchMessage = fetcher.readAsync('message', {roomId: roomId}).then(function (messages) {
       appDispatcher.dispatchViewAction({
         type: messageConstants.READ_MESSAGE,
         body: {
@@ -28,8 +28,8 @@ module.exports = {
     this.fetchMessage = fetchMessage;
     initializer.register(fetchMessage);
   },
-  update: function (message) {
-    fetcher.updateAsync('message').then(function (newMessage) {
+  update: function (message, newMessage) {
+    fetcher.updateAsync('message', {message: message, newMessage: newMessage}).then(function (newMessage) {
       appDispatcher.dispatchViewAction({
         type: messageConstants.UPDATE_MESSAGE,
         body: {
@@ -40,7 +40,7 @@ module.exports = {
     });
   },
   delete: function (message) {
-    fetcher.deleteAsync('message').then(function (message) {
+    fetcher.deleteAsync('message', {message: message}).then(function (message) {
       appDispatcher.dispatchViewAction({
         type: messageConstants.DELETE_MESSAGE,
         body: {

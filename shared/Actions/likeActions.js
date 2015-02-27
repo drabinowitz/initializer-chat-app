@@ -36,7 +36,7 @@ module.exports = {
     initializer.register(fetchLike);
   },
   delete: function (like) {
-    fetcher.deleteAsync('like').then(function (like) {
+    fetcher.deleteAsync('like', {like: like}).then(function (like) {
       appDispatcher.dispatchViewAction({
         type: likeConstants.DELETE_LIKE,
         body: {
