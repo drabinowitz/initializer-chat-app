@@ -9,8 +9,8 @@ var requestMessage = function (params) {
 var initializer = require('react-router-initializer');
 var initializerMixin = initializer.generateMixin(requestMessage);
 
-var messageActions = require('../Actions/messageActions');
-var messageStore = require('../Store/messageStore');
+var messageActions = require('../../Actions/messageActions');
+var messageStore = require('../../Stores/messageStore');
 var Message = require('./Message');
 var LikesOwner = require('../Likes/LikesOwner');
 

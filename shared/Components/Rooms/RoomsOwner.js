@@ -9,8 +9,8 @@ var requestRoom = function () {
 
 var InitializerMixin = require('react-router-initializer').generateMixin(requestRoom);
 
-var roomActions = require('../Actions/roomActions');
-var roomStore = require('../Stores/roomStore');
+var roomActions = require('../../Actions/roomActions');
+var roomStore = require('../../Stores/roomStore');
 var Room = require('./Room');
 
 var RoomsOwner = React.createClass({

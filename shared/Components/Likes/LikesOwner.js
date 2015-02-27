@@ -7,8 +7,8 @@ var requestLike = function (params) {
 
 var initializerMixin = require('react-router-initializer').generateMixin(requestLike);
 
-var likeActions = require('../Actions/likeActions');
-var likeStore = require('../Stores/likeStore');
+var likeActions = require('../../Actions/likeActions');
+var likeStore = require('../../Stores/likeStore');
 
 var LikesOwner = React.createClass({
   mixins:[initializerMixin, StateMixin],
