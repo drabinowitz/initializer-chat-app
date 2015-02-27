@@ -10,6 +10,7 @@ var App = React.createClass({
         <h1>Isomorphic Chat App Built With React Router Initializer</h1>
         <br />
         <Link to='home'>Home</Link>
+        <Link to='rooms'>View Rooms</Link>
         <RouteHandler />
       </div>
     );
