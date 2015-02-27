@@ -1,0 +1,5 @@
+module.exports = {
+  CREATE_LIKE: 'CREATE_LIKE',
+  READ_LIKE: 'READ_LIKE',
+  DELETE_LIKE: 'DELETE_LIKE'
+};
