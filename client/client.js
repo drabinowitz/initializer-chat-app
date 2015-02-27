@@ -4,7 +4,7 @@ var Fetcher = require('fetchr/libs/fetcher.client');
 
 var App = require('../shared/App');
 
-fetcher = new Fetcher({
+var fetcher = new Fetcher({
   xhrPath: App.xhrPath,
   requireCrumb: false
 });
