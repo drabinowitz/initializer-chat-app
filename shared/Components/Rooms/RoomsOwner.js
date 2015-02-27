@@ -62,7 +62,7 @@ var RoomsOwner = React.createClass({
     }.bind(this));
     return (
       <div>
-        <ReusableForm handleSubmit={this.createRoom}>Add New Room</ReusableForm>
+        <ReusableForm handleSubmit={this.createRoom} placeholder='Add New Room' />
         {roomList}
         <RouteHandler />
       </div>
