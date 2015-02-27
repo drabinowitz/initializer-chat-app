@@ -31,7 +31,7 @@ RoomFetcher = {
   },
   update: function(req, resource, params, body, config, callback) {
     setTimeout(function () {
-      var id = params.room.id;
+      var id = +params.room.id;
       var newRoom = params.newRoom;
       newRoom.id = id;
       rooms[id] = newRoom;
