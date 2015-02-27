@@ -1,5 +1,7 @@
 var React = require('react');
-var RouteHandler = require('react-router').RouteHandler;
+var Router = require('react-router');
+var RouteHandler = Router.RouteHandler;
+var StateMixin = Router.State;
 
 var requestRoom = function () {
   roomActions.read();
@@ -10,7 +12,6 @@ var InitializerMixin = require('react-router-initializer').generateMixin(request
 var roomActions = require('../Actions/roomActions');
 var roomStore = require('../Stores/roomStore');
 var Room = require('./Room');
-var StateMixin = require('react-router').State;
 
 var RoomsOwner = React.createClass({
   mixins: [StateMixin, InitializerMixin],
