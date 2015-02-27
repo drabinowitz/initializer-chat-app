@@ -1,11 +1,11 @@
 var appDispatcher = require('../Dispatcher/appDispatcher');
 var messageConstants = require('../Constants/messageConstants');
-var fetcher = require('../App').fetcher;
+var App = require('../App');
 var initializer = require('react-router-initializer');
 
 module.exports = {
   create: function (message) {
-    fetcher.createAsync('message', {message: message}).then(function (message) {
+    App.fetcher.createAsync('message', {message: message}).then(function (message) {
       appDispatcher.dispatchViewAction({
         type: messageConstants.CREATE_MESSAGE,
         body: {
@@ -15,7 +15,7 @@ module.exports = {
     });
   },
   read: function (roomId) {
-    var fetchMessage = fetcher.readAsync('message', {roomId: roomId}).then(function (messages) {
+    var fetchMessage = App.fetcher.readAsync('message', {roomId: roomId}).then(function (messages) {
       appDispatcher.dispatchViewAction({
         type: messageConstants.READ_MESSAGE,
         body: {
@@ -29,7 +29,7 @@ module.exports = {
     initializer.register(fetchMessage);
   },
   update: function (message, newMessage) {
-    fetcher.updateAsync('message', {message: message, newMessage: newMessage}).then(function (newMessage) {
+    App.fetcher.updateAsync('message', {message: message, newMessage: newMessage}).then(function (newMessage) {
       appDispatcher.dispatchViewAction({
         type: messageConstants.UPDATE_MESSAGE,
         body: {
@@ -40,7 +40,7 @@ module.exports = {
     });
   },
   delete: function (message) {
-    fetcher.deleteAsync('message', {message: message}).then(function (message) {
+    App.fetcher.deleteAsync('message', {message: message}).then(function (message) {
       appDispatcher.dispatchViewAction({
         type: messageConstants.DELETE_MESSAGE,
         body: {
