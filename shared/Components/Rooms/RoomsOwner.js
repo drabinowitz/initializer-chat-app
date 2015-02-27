@@ -1,8 +1,8 @@
 var React = require('react');
 var RouteHandler = require('react-router').RouteHandler;
 
-var requestRoom = function (params) {
-  roomActions.get(params.roomId);
+var requestRoom = function () {
+  roomActions.get();
 };
 
 var InitializerMixin = require('react-router-initializer').generateMixin(requestRoom);
@@ -27,11 +27,11 @@ var RoomsOwner = React.createClass({
 
   componentDidMount: function () {
     roomStore.addChangeListener(this.listenerCallback);
-    requestRoom(this.getParams());
+    requestRoom();
   },
 
   componentWillReceiveProps: function () {
-    requestRoom(this.getParams());
+    requestRoom();
   },
 
   componentWillUnmount: function () {
