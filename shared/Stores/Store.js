@@ -3,6 +3,7 @@ var EventEmitter = require('eventemitter').EventEmitter;
 var Store = function (data) {
   EventEmitter.call(this);
   this._data = data;
+  this.size = 0;
 };
 
 Store.prototype = Object.create(EventEmitter.prototype);
@@ -30,11 +31,13 @@ Store.prototype.getAll = function () {
 
 Store.prototype.create = function (value) {
   this._data[value.id] = value;
+  this.size++;
   this.emitChange();
 };
 
 Store.prototype.read = function (data) {
   this._data = data;
+  this.size = Object.keys(data).length;
   this.emitChange();
 };
 
@@ -45,6 +48,7 @@ Store.prototype.update = function (value, newValue) {
 
 Store.prototype.delete = function (value) {
   delete this._data[value.id];
+  this.size--;
   this.emitChange();
 };
 
