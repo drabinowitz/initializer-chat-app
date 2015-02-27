@@ -22,6 +22,7 @@ module.exports = {
           messages: messages
         }
       });
+      return messages;
     });
 
     this.fetchMessage = fetchMessage;

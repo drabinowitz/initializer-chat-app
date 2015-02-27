@@ -22,6 +22,7 @@ module.exports = {
           rooms: rooms
         }
       });
+      return rooms;
     });
 
     this.fetchRoom = fetchRoom;
