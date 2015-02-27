@@ -6,7 +6,7 @@ var messageActions = require('./messageActions');
 
 module.exports = {
   create: function (like) {
-    App.fetcher.createAsync('like', {like: like}).then(function (like) {
+    App.fetcher.createAsync('like', {like: like}, {}, {}).then(function (like) {
       appDispatcher.dispatchViewAction({
         type: likeConstants.CREATE_LIKE,
         body: {
@@ -19,7 +19,7 @@ module.exports = {
     var fetchLike = messageActions.fetchMessage
       .then(function (messages) {
         var messageIds = Object.keys(messages);
-        return App.fetcher.readAsync('like', {messageIds: messageIds});
+        return App.fetcher.readAsync('like', {messageIds: messageIds}, {});
       })
       .then(function (likes) {
         appDispatcher.dispatchViewAction({
@@ -36,7 +36,7 @@ module.exports = {
     initializer.register(fetchLike);
   },
   delete: function (like) {
-    App.fetcher.deleteAsync('like', {like: like}).then(function (like) {
+    App.fetcher.deleteAsync('like', {like: like}, {}).then(function (like) {
       appDispatcher.dispatchViewAction({
         type: likeConstants.DELETE_LIKE,
         body: {
