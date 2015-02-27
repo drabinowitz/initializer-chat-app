@@ -40,7 +40,10 @@ var RoomsOwner = React.createClass({
     roomStore.removeChangeListener(this.listenerCallback);
   },
 
-  createRoom: function (room) {
+  createRoom: function (title) {
+    var room = {
+      title: title
+    };
     roomActions.create(room);
   },
 
