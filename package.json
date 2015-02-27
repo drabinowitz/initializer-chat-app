@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/drabinowitz/initializer-chat-app",
   "dependencies": {
+    "bluebird": "^2.9.12",
     "browserify": "^9.0.3",
     "envify": "^3.2.0",
     "eventemitter": "^0.3.3",
@@ -26,7 +27,7 @@
     "gulp": "^3.8.11",
     "gulp-nodemon": "^1.0.5",
     "gulp-shell": "^0.3.0",
-    "mongoose": "^3.8.24",
+    "react-router-initializer": "*",
     "object-assign": "^2.0.0",
     "react": "^0.12.2",
     "react-router": "^0.12.4",
