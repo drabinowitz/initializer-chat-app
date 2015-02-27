@@ -1,13 +1,22 @@
 var EventEmitter = require('eventemitter').EventEmitter;
 
-var Store = function (data) {
+var Store = function (name) {
   EventEmitter.call(this);
-  this._data = data;
+  this._data = {};
+  this.name = name;
   this.size = 0;
 };
 
 Store.prototype = Object.create(EventEmitter.prototype);
 Store.prototype.constructor = Store;
+
+Store.prototype.dehydrate = function () {
+  return [this.name. this._data];
+};
+
+Store.prototype.rehydrate = function (state) {
+  this._data = state[this.name];
+};
 
 Store.prototype.emitChange = function () {
   this.emit('CHANGE');
