@@ -17,12 +17,11 @@ likeStore.getAllForMessageId = function (messageId) {
 
 likeStore.deleteForMessageId = function (like) {
   for (var id in this._data) {
-    if (like.messageId === this._data[id].messageId.toString()) {
-      delete likes[id];
+    if (like.messageId.toString() === this._data[id].messageId.toString()) {
+      this.delete(this._data[id]);
       break;
     }
   }
-  this.emitChange();
 };
 
 appDispatcher.register(function (payload) {

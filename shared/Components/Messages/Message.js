@@ -29,7 +29,7 @@ var Message = React.createClass({
 
     var newMessage = {
       id: this.props.message.id,
-      RoomId: this.props.message.roomId,
+      roomId: this.props.message.roomId,
       text: newText
     };
 
@@ -37,7 +37,7 @@ var Message = React.createClass({
   },
 
   onDelete: function () {
-    this.handleDelete(this.props.message);
+    this.props.handleDelete(this.props.message);
   },
 
   render: function () {
@@ -54,9 +54,9 @@ var Message = React.createClass({
     return (
       <div>
         {toShow}
-        <LikesOwner messageId={this.props.message.id} />
         <button onClick={this.showEdit}>Edit</button>
         <button onClick={this.onDelete}>Delete</button>
+        <LikesOwner messageId={this.props.message.id} />
       </div>
     );
   }

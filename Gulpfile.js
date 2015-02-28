@@ -7,9 +7,9 @@ gulp.task('serve', function () {
 });
 
 gulp.task('browserify', shell.task([
-  'browserify shared/Components/Routes.js -o client/bundle.js'
+  'browserify client/client.js -o client/bundle.js'
 ]));
 
 gulp.task('watchify', shell.task([
-  'watchify -d shared/Components/Routes.js -o client/bundle.js -v'
+  'watchify -d client/client.js -o client/bundle.js -v'
 ]));

@@ -19,7 +19,7 @@ var ReusableForm = React.createClass({
     e.preventDefault();
     e.stopPropagation();
 
-    this.props.handleSubmit(this.refs.formInput.value);
+    this.props.handleSubmit(this.refs.formInput.getDOMNode().value);
   },
 
   render: function () {

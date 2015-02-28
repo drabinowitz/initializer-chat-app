@@ -28,7 +28,7 @@ module.exports = {
     this.fetchRoom = fetchRoom;
     initializer.register(fetchRoom);
   },
-  update: function (room) {
+  update: function (room, newRoom) {
     App.fetcher.updateAsync('room', {room: room, newRoom: newRoom}, {}, {}).then(function (newRoom) {
       appDispatcher.dispatchViewAction({
         type: roomConstants.UPDATE_ROOM,

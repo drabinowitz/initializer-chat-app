@@ -27,7 +27,7 @@ Store.prototype.addChangeListener = function (callback) {
 };
 
 Store.prototype.removeChangeListener = function (callback) {
-  this.removeChangeListener('CHANGE', callback);
+  this.removeListener('CHANGE', callback);
 };
 
 Store.prototype.get = function (id) {

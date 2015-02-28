@@ -35,7 +35,7 @@ var Room = React.createClass({
   },
 
   onDelete: function () {
-    this.handleDelete(this.props.room);
+    this.props.handleDelete(this.props.room);
   },
 
   render: function () {

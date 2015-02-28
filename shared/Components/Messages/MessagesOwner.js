@@ -37,7 +37,7 @@ var MessagesOwner = React.createClass({
 
   componentWillReceiveProps: function () {
     if (this.getParams().roomId !== this.state.currentRoomId) {
-      this.listenerCallback();
+      requestMessage(this.getParams());
     }
   },
 

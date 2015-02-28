@@ -19,7 +19,8 @@ var LikesOwner = React.createClass({
 
   getInitialState: function () {
     return {
-      hasLiked: false,
+      hasLiked: this.state ? this.state.hasLiked : false,
+      currentRoomId: this.getParams().roomId,
       likes: likeStore.getAllForMessageId(this.props.messageId)
     };
   },
@@ -30,14 +31,24 @@ var LikesOwner = React.createClass({
 
   componentDidMount: function () {
     likeStore.addChangeListener(this.listenerCallback);
-    requestLike(this.getParams());
+    setTimeout(function () {
+      requestLike(this.getParams());
+    }.bind(this), 0);
+  },
+
+  componentWillReceiveProps: function () {
+    if (this.getParams().roomId !== this.state.currentRoomId) {
+      requestLike(this.getParams());
+    }
   },
 
   componentWillUnmount: function () {
     likeStore.removeChangeListener(this.listenerCallback);
   },
 
-  handleLike: function () {
+  handleLike: function (e) {
+    e.preventDefault();
+    e.stopPropagation();
     if (!this.state.hasLiked) {
       this.setState({
         hasLiked: true
