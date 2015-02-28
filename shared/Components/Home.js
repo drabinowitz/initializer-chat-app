@@ -22,6 +22,7 @@ var App = React.createClass({
         <h2>{this.state.fullyLoaded ? 'the app has loaded' : 'server side rendering'}</h2>
         <br />
         <Link to='home'>Home</Link>
+        <br />
         <Link to='rooms'>View Rooms</Link>
         <RouteHandler />
       </div>

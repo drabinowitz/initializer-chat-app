@@ -22,6 +22,7 @@ var Room = React.createClass({
   },
 
   onUpdate: function (newTitle) {
+    //stop showing form when we submit the edit
     this.setState({
       editing: false
     });
@@ -40,13 +41,14 @@ var Room = React.createClass({
 
   render: function () {
     var toShow;
+    //if we are editing show the form if we are not editing show the link1
     if (this.state.editing) {
       toShow = (
         <ReusableForm handleSubmit={this.onUpdate} defaultValue={this.props.room.title} />
       );
     } else {
       toShow = (
-        <Link to='messages' params={{roomId: this.props.room.id}}>{this.props.room.title}</Link>
+        <Link to='messages' params={{roomId: this.props.room.id}} activeStyle={{'font-weight': 'bold', 'font-size': '200%'}}>{this.props.room.title}</Link>
       );
     }
 
