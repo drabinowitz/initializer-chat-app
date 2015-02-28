@@ -8,8 +8,9 @@ var messageStore = new Store('message');
 messageStore.getAllForRoomId = function (roomId) {
   var result = {};
   for (var id in this._data) {
-    if (id === roomId.toString()) {
-      result[id] = this._data[id];
+    var message = this._data[id];
+    if (message.roomId.toString() === roomId.toString()) {
+      result[id] = message;
     }
   }
   return result;

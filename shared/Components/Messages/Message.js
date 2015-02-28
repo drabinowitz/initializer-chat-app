@@ -48,14 +48,13 @@ var Message = React.createClass({
       );
     } else {
       toShow = (
-        <h3>{message.text}</h3>
+        <h3>{this.props.message.text}</h3>
       );
     }
-
     return (
       <div>
         {toShow}
-        <LikesOwner messageId={message.id} />
+        <LikesOwner messageId={this.props.message.id} />
         <button onClick={this.showEdit}>Edit</button>
         <button onClick={this.onDelete}>Delete</button>
       </div>

@@ -34,7 +34,6 @@ app.use(function (req, res) {
   Router.run(Routes, req.url, function (Handler, RouteState) {
     initializer.execute(RouteState).then(function () {
       var markup = React.renderToString(React.createElement(Handler, null));
-
       var state = [require('../shared/Stores/roomStore'), require('../shared/Stores/messageStore'), require('../shared/Stores/likeStore')].reduce(function (state, store) {
         var dehydratedStoreState = store.dehydrate();
         state += 'window.state["' + dehydratedStoreState[0] + '"]=' + JSON.stringify(dehydratedStoreState[1]) + ';';

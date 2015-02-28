@@ -5,7 +5,7 @@ var likeConstants = require('../Constants/likeConstants');
 
 var likeStore = new Store('like');
 
-likeStore.getAllForMessage = function (messageId) {
+likeStore.getAllForMessageId = function (messageId) {
   return Object.keys(this._data).reduce(function (sum, likeId) {
     if (this._data[likeId].messageId === messageId) {
       sum++;

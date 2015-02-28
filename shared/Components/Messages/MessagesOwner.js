@@ -22,7 +22,7 @@ var MessagesOwner = React.createClass({
     var roomId = this.getParams().roomId;
     return {
       currentRoomId: roomId,
-      messages: messageStore.getAllForRoom(roomId)
+      messages: messageStore.getAllForRoomId(roomId)
     };
   },
 
@@ -64,9 +64,10 @@ var MessagesOwner = React.createClass({
   render: function () {
     var messages = Object.keys(this.state.messages).sort(function (a,b) {return a-b;}).map(function (messageId) {
       var message = this.state.messages[messageId];
-      return <Message key={message.id} message={message} handleUpdate={this.updateMessage} handleDelete={this.deleteMessage} />
-    });
-
+      return (
+        <Message key={message.id} message={message} handleUpdate={this.updateMessage} handleDelete={this.deleteMessage} />
+      );
+    }.bind(this));
     return (
       <div>
         <ReusableForm handleSubmit={this.createMessage} placeholder='create message' />

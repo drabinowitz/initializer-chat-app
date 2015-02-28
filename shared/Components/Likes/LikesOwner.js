@@ -20,7 +20,7 @@ var LikesOwner = React.createClass({
   getInitialState: function () {
     return {
       hasLiked: false,
-      likes: likesStore.getAllForMessage(this.props.messageId)
+      likes: likeStore.getAllForMessageId(this.props.messageId)
     };
   },
 
@@ -59,7 +59,7 @@ var LikesOwner = React.createClass({
     return (
       <div>
         <p>Likes: {this.state.likes}</p>
-        <button onClick={this.handleLike}>{this.state.hasLiked ? 'Like': 'Unlike'}</button>
+        <button onClick={this.handleLike}>{this.state.hasLiked ? 'Unlike': 'Like'}</button>
       </div>
     );
   }
