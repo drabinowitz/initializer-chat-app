@@ -7,9 +7,11 @@ gulp.task('serve', function () {
 });
 
 gulp.task('browserify', shell.task([
-  'browserify client/client.js -o client/bundle.js'
+  'browserify -d client/client.js -o client/bundle.js'
 ]));
 
 gulp.task('watchify', shell.task([
   'watchify -d client/client.js -o client/bundle.js -v'
 ]));
+
+gulp.task('start', ['browserify', 'serve']);
