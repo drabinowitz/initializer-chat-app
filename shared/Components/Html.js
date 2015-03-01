@@ -1,6 +1,9 @@
 var React = require('react');
 
 var Html = React.createClass({
+  //app Html we only use this for server side rendering
+  //submit markup inside of app
+  //submit state to script tag
   render: function () {
     return (
       <html>

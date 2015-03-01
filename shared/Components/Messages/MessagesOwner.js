@@ -1,12 +1,16 @@
 var React = require('react');
 var StateMixin = require('react-router').State;
 
+//request for message data based on the roomId param
 var requestMessage = function (params) {
   messageActions.read(params.roomId);
+  //handle the LikesOwner component will initializing
   initializer.handle([LikesOwner]);
 };
 
 var initializer = require('react-router-initializer');
+
+//generate an initializer mixin with the request callback
 var initializerMixin = initializer.generateMixin(requestMessage);
 
 var messageActions = require('../../Actions/messageActions');
@@ -21,6 +25,7 @@ var MessagesOwner = React.createClass({
   getInitialState: function () {
     var roomId = this.getParams().roomId;
     return {
+      //store current route in state so we can check for route changes
       currentRoomId: roomId,
       messages: messageStore.getAllForRoomId(roomId)
     };
@@ -36,6 +41,7 @@ var MessagesOwner = React.createClass({
   },
 
   componentWillReceiveProps: function () {
+    //generate new request whenever our routes change
     if (this.getParams().roomId !== this.state.currentRoomId) {
       requestMessage(this.getParams());
     }
@@ -46,6 +52,7 @@ var MessagesOwner = React.createClass({
   },
 
   createMessage: function (text) {
+    //geenerate new message with text input and room route id
     var message = {
       text: text,
       roomId: this.getParams().roomId
@@ -62,12 +69,17 @@ var MessagesOwner = React.createClass({
   },
 
   render: function () {
+    //Object.keys(this.state.messages) returns an array of our message ids
+    //sort that array by ids so it has a consistent length
+    //map the sorted array of ids to Message components
     var messages = Object.keys(this.state.messages).sort(function (a,b) {return a-b;}).map(function (messageId) {
+      //get message corresponding to each id
       var message = this.state.messages[messageId];
       return (
         <Message key={message.id} message={message} handleUpdate={this.updateMessage} handleDelete={this.deleteMessage} />
       );
     }.bind(this));
+
     return (
       <div>
         <ReusableForm handleSubmit={this.createMessage} placeholder='create message' />

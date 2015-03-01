@@ -3,9 +3,11 @@ var Store = require('./Store');
 var appDispatcher = require('../Dispatcher/appDispatcher');
 var messageConstants = require('../Constants/messageConstants');
 
+//new instance of Store
 var messageStore = new Store('message');
 
 messageStore.getAllForRoomId = function (roomId) {
+  //return an object containing each message within our passed in roomId
   var result = {};
   for (var id in this._data) {
     var message = this._data[id];
@@ -16,6 +18,7 @@ messageStore.getAllForRoomId = function (roomId) {
   return result;
 };
 
+//register with the dispatcher
 appDispatcher.register(function (payload) {
   var type = payload.action.type;
   var body = payload.action.body;

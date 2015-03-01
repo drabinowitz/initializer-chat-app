@@ -1,3 +1,4 @@
+//messages hash
 var messages = {
   0: {
     id: 0,
@@ -31,11 +32,13 @@ var messages = {
   },
 };
 
+//track id for creating new message
 var nextId = 6;
 
 MessageFetcher = {
   name: 'message',
   create: function(req, resource, params, body, config, callback) {
+    //create new message after timeout and pass to callback
     setTimeout(function () {
       var message = {
         id: nextId,
@@ -48,10 +51,14 @@ MessageFetcher = {
     }, 100);
   },
   read: function(req, resource, params, config, callback) {
+    //read in messages in room id after timeout and pass to callback
     setTimeout(function () {
       var roomId = params.roomId;
+      //Object.keys(messages) returns an array of message ids
+      //reduce the array to a filtered object
       var messagesInRoom = Object.keys(messages).reduce(function (messagesInRoom, messageId) {
         var message = messages[messageId];
+        //if the message.roomId is the roomId then add to object
         if (message.roomId.toString() === roomId) {
           messagesInRoom[messageId] = message;
         }
@@ -61,6 +68,7 @@ MessageFetcher = {
     }, 100);
   },
   update: function(req, resource, params, body, config, callback) {
+    //add id from old message to new message and replace old message with new message in messages after timeout and pass to callback
     setTimeout(function () {
       var id = +params.message.id;
       var newMessage = params.newMessage;
@@ -70,6 +78,7 @@ MessageFetcher = {
     }, 100);
   },
   delete: function(req, resource, params, config, callback) {
+    //delete message after timeout and pass to callback
     setTimeout(function () {
       var message = params.message;
       delete messages[message.id];

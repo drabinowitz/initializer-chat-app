@@ -6,6 +6,7 @@ var Home = require('./Home');
 var RoomsOwner = require('./Rooms/RoomsOwner');
 var MessagesOwner = require('./Messages/MessagesOwner');
 
+//client side app routes
 var Routes = (
   <Route name='home' path='/' handler={Home}>
     <Route name='rooms' path='/rooms' handler={RoomsOwner}>

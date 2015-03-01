@@ -10,6 +10,7 @@ var App = React.createClass({
     };
   },
   componentDidMount: function () {
+    //show difference between server side rendering and client side app
     this.setState({
       fullyLoaded: true
     });

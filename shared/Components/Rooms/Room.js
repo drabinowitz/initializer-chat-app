@@ -41,7 +41,7 @@ var Room = React.createClass({
 
   render: function () {
     var toShow;
-    //if we are editing show the form if we are not editing show the link1
+    //if we are editing show the form if we are not editing show the link
     if (this.state.editing) {
       toShow = (
         <ReusableForm handleSubmit={this.onUpdate} defaultValue={this.props.room.title} />
